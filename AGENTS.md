@@ -71,13 +71,13 @@
 
 ## Разработка
 
-При запуске dev-сервера используй фоновый режим:
+Astro 7 при обнаружении ИИ-агента запускает `astro dev` автоматически в фоне — просто запускай:
 
 ```bash
-astro dev --background
+npm run dev
 ```
 
-Управление: `astro dev stop`, `astro dev status`, `astro dev logs`.
+Dev-сервер пишет lock-файл `.astro/dev.json` (URL, порт, PID) — повторный запуск не поднимет второй сервер. Готовность сервера проверяй эндпоинтом `GET /_astro/status` (ответ `{"ok": true}`, только в dev-режиме). Чтобы отключить фоновый режим: `ASTRO_DEV_BACKGROUND=0 astro dev`.
 
 Перед коммитом:
 
@@ -133,6 +133,15 @@ public/         → CNAME, .nojekyll, favicon, og-image, robots.txt
 - [Internationalization](https://docs.astro.build/en/guides/internationalization/)
 
 Если API, который ты помнишь, не совпадает с текущей докой — **верь доке**, и явно сообщи пользователю, что паттерн устарел.
+
+### MCP-сервер Astro Docs
+
+В репозитории настроен MCP-сервер документации Astro (`https://mcp.docs.astro.build/mcp`) — он даёт ИИ-инструментам доступ к актуальной доке в реальном времени:
+
+- `.vscode/mcp.json` — для VS Code Copilot Chat;
+- `.mcp.json` — общий формат для агентных CLI (Claude Code и др.).
+
+Если твой инструмент поддерживает MCP — используй этот сервер для поиска по документации Astro вместо ответов по памяти.
 
 ## Чек-лист перед PR
 
