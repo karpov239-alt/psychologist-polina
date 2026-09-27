@@ -5,6 +5,7 @@ export const enum SocialLink {
   Telegram = 'https://t.me/polinadvoretskaia',
   Vk = 'https://vk.ru/pollinaflores',
   B17 = 'https://www.b17.ru/dvoreckaya_polina/',
+  Max = 'https://max.ru/u/f9LHodD0cOJW-y67Gm_cx8avm7z4w9N3plSyjcf4PdaCskaSop2pz3R6_MQ',
   Email = 'pollinaflores@gmail.com',
 }
 

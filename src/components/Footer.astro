@@ -30,23 +30,28 @@ const year = new Date().getFullYear();
       <p class="text-sm font-semibold uppercase tracking-wide text-cream-300">Связаться</p>
       <ul class="mt-3 space-y-2 text-sm">
         <li>
-          <a href={SocialLink.Telegram} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
-            Telegram — @polinadvoretskaia
-          </a>
-        </li>
-        <li>
           <a href={SocialLink.Vk} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
-            VK — vk.ru/pollinaflores
+            Профиль в VK
           </a>
         </li>
         <li>
-          <a href={`mailto:${SocialLink.Email}`} class="transition-colors hover:text-cream-50 hover:underline">
-            {SocialLink.Email}
+          <a href={SocialLink.Max} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
+            Профиль в Max
           </a>
         </li>
         <li>
           <a href={SocialLink.B17} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
             Профиль на b17.ru
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${SocialLink.Email}`} class="transition-colors hover:text-cream-50 hover:underline">
+            Почта: {SocialLink.Email}
+          </a>
+        </li>
+        <li>
+          <a href={SocialLink.Telegram} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
+            Профиль в Telegram
           </a>
         </li>
       </ul>
