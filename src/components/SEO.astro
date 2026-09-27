@@ -20,7 +20,7 @@ const canonicalURL = canonical
   ? new URL(canonical, siteURL)
   : new URL(Astro.url.pathname, siteURL);
 
-const fullTitle = title.includes(PSYCHOLOGIST_NAME) ? title : `${title} | г. ${SITE_NAME}`;
+const fullTitle = title.includes(PSYCHOLOGIST_NAME) ? title : `${title} | ${SITE_NAME}`;
 const ogImage = new URL('/og-image.jpg', siteURL);
 ---
 

@@ -91,12 +91,14 @@ npm run build    # проверка, что сборка проходит
 ```
 src/
   components/   → UI-компоненты (.astro)
-  content/      → content collections (статьи)
-  layouts/      → BaseLayout, ArticleLayout
-  pages/        → роуты
-  styles/       → global.css
+  content/
+    articles/   → статьи (.md), коллекция `articles`
+  layouts/      → Layout
+  pages/        → роуты; статьи — pages/articles/ (список + [...id].astro)
+  styles/       → global.css (включая стили `.article-content` для текста статей)
   types/        → общие TS-интерфейсы
-  utils/        → хелперы (seo.ts, date.ts)
+  utils/        → хелперы (site.ts, date.ts, faq.ts)
+content.config.ts → схема коллекции `articles` (title, description, publishedAt, updatedAt?, cover?, tags[], keywords[], draft)
 public/         → CNAME, .nojekyll, favicon, og-image, robots.txt
 ```
 
