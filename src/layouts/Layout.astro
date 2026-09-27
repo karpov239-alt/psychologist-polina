@@ -1,0 +1,102 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  canonical,
+  type = 'website',
+} = Astro.props;
+
+const siteURL = Astro.site ?? new URL('https://polina-dvoretskaya.ru');
+const canonicalURL = canonical
+  ? new URL(canonical, siteURL)
+  : new URL(Astro.url.pathname, siteURL);
+
+const fullTitle = `${title} | Психолог Полина Дворецкая, Ярославль`;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- TODO: добавить favicon -->
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <!-- <link rel="icon" href="/favicon.ico" /> -->
+
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- TODO: добавить og:image после создания public/og-image.jpg -->
+    <!-- <meta property="og:image" content={ogImage} /> -->
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f5f2;
+    color: #2c2c2c;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card {
+    max-width: 560px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #4a5d52;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #5c5c5c;
+    margin-bottom: 24px;
+  }
+
+  a {
+    color: #4a5d52;
+    text-decoration: none;
+    border-bottom: 1px solid #4a5d52;
+    padding-bottom: 2px;
+  }
+
+  a:hover {
+    opacity: 0.7;
+  }
+</style>
