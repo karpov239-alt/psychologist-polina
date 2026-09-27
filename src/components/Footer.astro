@@ -1,0 +1,62 @@
+---
+import { NAV_ITEMS, SocialLink } from '@utils/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-pine-100 bg-pine-900 text-cream-100">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
+    <div>
+      <p class="font-display text-2xl font-semibold text-cream-50">Полина Дворецкая</p>
+      <p class="mt-3 max-w-xs text-sm leading-relaxed text-cream-200">
+        Практикующий психолог, магистр психологии. Очные консультации в Ярославле и онлайн из любой точки мира.
+      </p>
+    </div>
+
+    <nav aria-label="Навигация в подвале">
+      <p class="text-sm font-semibold uppercase tracking-wide text-cream-300">Разделы</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a href={item.href} class="text-cream-100 transition-colors hover:text-cream-50 hover:underline">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-cream-300">Связаться</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li>
+          <a href={SocialLink.Telegram} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
+            Telegram — @polinadvoretskaia
+          </a>
+        </li>
+        <li>
+          <a href={SocialLink.Vk} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
+            VK — vk.ru/pollinaflores
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${SocialLink.Email}`} class="transition-colors hover:text-cream-50 hover:underline">
+            {SocialLink.Email}
+          </a>
+        </li>
+        <li>
+          <a href={SocialLink.B17} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-cream-50 hover:underline">
+            Профиль на b17.ru
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-pine-700">
+    <div class="mx-auto max-w-6xl space-y-2 px-4 py-6 text-xs leading-relaxed text-cream-300 sm:px-6">
+      <p>Сайт не является медицинским сервисом. Консультации не заменяют медицинскую помощь.</p>
+      <p>© {year} Полина Дворецкая. Все права защищены.</p>
+    </div>
+  </div>
+</footer>

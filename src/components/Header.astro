@@ -1,0 +1,62 @@
+---
+import { NAV_ITEMS, SocialLink } from '@utils/site';
+---
+
+<header class="sticky top-0 z-40 border-b border-pine-100 bg-cream-100/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href="/" class="font-display text-xl font-semibold text-pine-700 sm:text-2xl">
+      Полина Дворецкая
+    </a>
+
+    <nav aria-label="Основная навигация" class="hidden items-center gap-6 lg:flex">
+      {NAV_ITEMS.map((item) => (
+        <a href={item.href} class="text-sm text-pine-700 transition-colors hover:text-pine-500">
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={SocialLink.Telegram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-pine-500 px-5 py-2 text-sm font-medium text-cream-50 transition-colors hover:bg-pine-600"
+      >
+        Записаться
+      </a>
+    </nav>
+
+    <details class="group relative lg:hidden">
+      <summary
+        class="flex cursor-pointer list-none items-center justify-center rounded-lg p-2 text-pine-700 [&::-webkit-details-marker]:hidden"
+        aria-label="Открыть меню"
+      >
+        <svg class="size-6 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+        <svg class="hidden size-6 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </summary>
+      <nav
+        aria-label="Мобильная навигация"
+        class="absolute right-0 top-full mt-2 flex w-56 flex-col gap-1 rounded-2xl border border-pine-100 bg-cream-50 p-3 shadow-lg"
+      >
+        {NAV_ITEMS.map((item) => (
+          <a href={item.href} class="rounded-lg px-3 py-2 text-pine-800 transition-colors hover:bg-pine-50">
+            {item.label}
+          </a>
+        ))}
+        <a
+          href={SocialLink.Telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-1 rounded-full bg-pine-500 px-4 py-2 text-center font-medium text-cream-50 transition-colors hover:bg-pine-600"
+        >
+          Записаться
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>

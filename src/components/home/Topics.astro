@@ -1,0 +1,75 @@
+---
+import IconHeart from '@components/icons/IconHeart.astro';
+import IconLink from '@components/icons/IconLink.astro';
+import IconShield from '@components/icons/IconShield.astro';
+import IconCloud from '@components/icons/IconCloud.astro';
+import IconCompass from '@components/icons/IconCompass.astro';
+import IconSun from '@components/icons/IconSun.astro';
+
+const topics = [
+  {
+    icon: 'heart',
+    title: 'Отношения',
+    text: 'Межличностные, романтические и семейные отношения, детско-родительские связи. Как семейный психолог в Ярославле, помогу разобраться в повторяющихся сценариях.',
+  },
+  {
+    icon: 'link',
+    title: 'Привязанность и сценарии',
+    text: 'Почему отношения складываются по одному кругу? Исследуем тип привязанности и научимся строить близость по-новому.',
+  },
+  {
+    icon: 'shield',
+    title: 'Личные границы',
+    text: 'Научиться говорить «нет» без чувства вины, отстаивать своё пространство и при этом сохранять тёплые отношения.',
+  },
+  {
+    icon: 'cloud',
+    title: 'Одиночество и неопределённость',
+    text: 'Помогу справиться с чувством одиночества, тревогой о будущем и ощущением «застревания» в настоящем.',
+  },
+  {
+    icon: 'compass',
+    title: 'Кризисы и выбор',
+    text: 'Возрастные и личностные кризисы, внутриличностные конфликты, сложные решения. Поддержка в переломные периоды жизни.',
+  },
+  {
+    icon: 'sun',
+    title: 'Поиск себя и смысла',
+    text: 'Самоценность, самопонимание, ответы на вопросы «кто я?» и «куда иду?» — в спокойном, бережном темпе.',
+  },
+] as const;
+
+const icons = {
+  heart: IconHeart,
+  link: IconLink,
+  shield: IconShield,
+  cloud: IconCloud,
+  compass: IconCompass,
+  sun: IconSun,
+} as const;
+---
+
+<section id="topics" class="bg-cream-100">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <h2 class="font-display text-3xl font-semibold text-pine-800 sm:text-4xl">С чем я работаю</h2>
+    <p class="mt-4 max-w-2xl leading-relaxed text-pine-700">
+      Каждый запрос уникален, но чаще всего ко мне приходят с этими темами.
+      Если вашей здесь нет — напишите, и мы обсудим, смогу ли я быть полезной.
+    </p>
+
+    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {topics.map((topic) => {
+        const Icon = icons[topic.icon];
+        return (
+          <li class="rounded-3xl border border-pine-100 bg-cream-50 p-6 transition-shadow hover:shadow-md">
+            <div class="flex size-12 items-center justify-center rounded-2xl bg-pine-100 text-pine-600">
+              <Icon class="size-6" />
+            </div>
+            <h3 class="mt-4 font-display text-xl font-semibold text-pine-800">{topic.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-pine-700">{topic.text}</p>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

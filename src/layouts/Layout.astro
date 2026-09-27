@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import SEO from '@components/SEO.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 
 interface Props {
   title: string;
@@ -8,48 +11,27 @@ interface Props {
   type?: 'website' | 'article';
 }
 
-const {
-  title,
-  description,
-  canonical,
-  type = 'website',
-} = Astro.props;
-
-const siteURL = Astro.site ?? new URL('https://polina-dvoretskaya.ru');
-const canonicalURL = canonical
-  ? new URL(canonical, siteURL)
-  : new URL(Astro.url.pathname, siteURL);
-
-const fullTitle = `${title} | Психолог Полина Дворецкая, Ярославль`;
+const { title, description, canonical, type } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- TODO: добавить favicon -->
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-    <!-- <link rel="icon" href="/favicon.ico" /> -->
-
-    <meta name="generator" content={Astro.generator} />
-
-    <title>{fullTitle}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content={type} />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:locale" content="ru_RU" />
-
-    <!-- TODO: добавить og:image после создания public/og-image.jpg -->
-    <!-- <meta property="og:image" content={ogImage} /> -->
+    <SEO title={title} description={description} canonical={canonical} type={type}>
+      <slot name="head" />
+    </SEO>
   </head>
-  <body>
-    <slot />
+  <body class="flex min-h-screen flex-col antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded-lg focus:bg-pine-500 focus:px-4 focus:py-2 focus:text-cream-50"
+    >
+      Перейти к содержимому
+    </a>
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

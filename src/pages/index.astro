@@ -1,18 +1,91 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/home/Hero.astro';
+import About from '@components/home/About.astro';
+import Topics from '@components/home/Topics.astro';
+import Approach from '@components/home/Approach.astro';
+import Services from '@components/home/Services.astro';
+import Education from '@components/home/Education.astro';
+import Faq from '@components/home/Faq.astro';
+import Contacts from '@components/home/Contacts.astro';
+import { FAQ_ITEMS } from '@utils/faq';
+import { SITE_URL, SocialLink } from '@utils/site';
+
+const psychologistSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Psychologist',
+  name: 'Полина Дворецкая',
+  jobTitle: 'Практикующий психолог, кризисный психолог',
+  url: SITE_URL,
+  image: `${SITE_URL}/og-image.jpg`,
+  email: SocialLink.Email,
+  priceRange: '2500 RUB',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Ярославль',
+    addressCountry: 'RU',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Ярославль' },
+    { '@type': 'AdministrativeArea', name: 'Online' },
+  ],
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Ярославский государственный педагогический университет им. К. Д. Ушинского',
+  },
+  knowsAbout: [
+    'межличностные отношения',
+    'семейные отношения',
+    'детско-родительские отношения',
+    'привязанность',
+    'личные границы',
+    'одиночество',
+    'возрастные и личностные кризисы',
+    'поиск себя и смысла жизни',
+    'принятие решений',
+    'самоценность',
+  ],
+  sameAs: [SocialLink.B17, SocialLink.Telegram, SocialLink.Vk],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Психолог Полина Дворецкая, Ярославль',
+  url: SITE_URL,
+  inLanguage: 'ru-RU',
+};
 ---
 
 <Layout
-  title="Скоро открытие"
-  description="Скоро здесь появится сайт практикующего психолога Полины Дворецкой. Запись на консультацию — по почте."
+  title="Психолог в Ярославле"
+  description="Психолог Полина Дворецкая в Ярославле: очные и онлайн-консультации, 2500 ₽ / 50 минут. Помогу с отношениями, тревогой, кризисами и поиском себя. Запись в Telegram."
 >
-  <div class="card">
-    <h1>Сайт скоро откроется</h1>
-    <p>Здесь появится сайт практикующего психолога Полины Дворецкой.</p>
-    <p>
-      Связаться:
-      <a href="mailto:pollinaflores@gmail.com">pollinaflores@gmail.com</a>
-    </p>
-    <i>На основе Astro ✅</i>
-  </div>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(psychologistSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </Fragment>
+
+  <Hero />
+  <About />
+  <Topics />
+  <Approach />
+  <Services />
+  <Education />
+  <Faq />
+  <Contacts />
 </Layout>

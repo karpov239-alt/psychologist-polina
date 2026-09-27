@@ -1,0 +1,84 @@
+---
+import { Picture } from 'astro:assets';
+import { SocialLink } from '@utils/site';
+import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
+---
+
+<section id="contacts" class="bg-cream-100">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
+    <div>
+      <h2 class="font-display text-3xl font-semibold text-pine-800 sm:text-4xl">Контакты</h2>
+      <p class="mt-4 max-w-lg leading-relaxed text-pine-700">
+        Принимаю очно в Ярославле и онлайн по всему миру. Первый шаг — самый простой:
+        напишите мне, и мы подберём удобное время для встречи.
+      </p>
+
+      <ul class="mt-8 space-y-4">
+        <li>
+          <a
+            href={SocialLink.Telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
+          >
+            <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">TG</span>
+            <span>
+              <span class="block text-sm text-pine-600">Telegram — быстрый способ записаться</span>
+              <span class="font-semibold text-pine-800">@polinadvoretskaia</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={SocialLink.Vk}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
+          >
+            <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">VK</span>
+            <span>
+              <span class="block text-sm text-pine-600">ВКонтакте</span>
+              <span class="font-semibold text-pine-800">vk.ru/pollinaflores</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={`mailto:${SocialLink.Email}`}
+            class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
+          >
+            <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">@</span>
+            <span>
+              <span class="block text-sm text-pine-600">Электронная почта</span>
+              <span class="font-semibold text-pine-800">{SocialLink.Email}</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={SocialLink.B17}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
+          >
+            <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">Б17</span>
+            <span>
+              <span class="block text-sm text-pine-600">Профиль на b17.ru</span>
+              <span class="font-semibold text-pine-800">b17.ru/dvoreckaya_polina</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <Picture
+      src={contactsPhoto}
+      alt="Полина Дворецкая — психолог, приём очно в Ярославле и онлайн"
+      widths={[400, 640, 900]}
+      sizes="(min-width: 1024px) 45vw, 90vw"
+      formats={['avif', 'webp']}
+      loading="lazy"
+      class="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-md"
+    />
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+import { Picture } from 'astro:assets';
+import { SocialLink } from '@utils/site';
+import heroPhoto from '@assets/polina_is_sitting_colored_1.jpg';
+---
+
+<section class="overflow-hidden bg-cream-100">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
+    <div>
+      <p class="text-sm font-medium uppercase tracking-widest text-clay-600">
+        Психолог · Ярославль · Онлайн
+      </p>
+      <h1 class="mt-4 font-display text-4xl font-semibold leading-tight text-pine-800 sm:text-5xl lg:text-6xl">
+        Психолог в&nbsp;Ярославле — Полина Дворецкая
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-pine-700">
+        Кризисный психолог, магистр психологии. Помогу справиться с тревогой, разобраться
+        в отношениях и найти опору в себе — очно в Ярославле и онлайн из любой точки мира.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          href={SocialLink.Telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-pine-500 px-7 py-3 font-medium text-cream-50 shadow-sm transition-colors hover:bg-pine-600"
+        >
+          Записаться на консультацию
+        </a>
+        <a
+          href="#about"
+          class="rounded-full border border-pine-300 px-7 py-3 font-medium text-pine-700 transition-colors hover:border-pine-500 hover:bg-pine-50"
+        >
+          Узнать больше
+        </a>
+      </div>
+      <p class="mt-8 font-display text-xl italic text-pine-600">
+        «Жизнь прекрасна во всех её проявлениях»
+      </p>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-pine-100" aria-hidden="true"></div>
+      <Picture
+        src={heroPhoto}
+        alt="Полина Дворецкая — практикующий психолог в Ярославле"
+        widths={[400, 640, 900]}
+        sizes="(min-width: 1024px) 45vw, 90vw"
+        formats={['avif', 'webp']}
+        fetchpriority="high"
+        loading="eager"
+        class="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-lg"
+      />
+    </div>
+  </div>
+</section>

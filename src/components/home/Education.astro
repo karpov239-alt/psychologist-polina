@@ -1,0 +1,71 @@
+---
+const education = [
+  {
+    period: '2024–2026',
+    title: 'Магистратура «Психологическое консультирование в кризисных ситуациях»',
+    place: 'ЯрГПУ им. К. Д. Ушинского, Ярославль',
+  },
+  {
+    period: '2019–2023',
+    title: 'Бакалавриат «Психология и социальная педагогика»',
+    place: 'ЯрГПУ им. К. Д. Ушинского, Ярославль',
+  },
+] as const;
+
+const courses = [
+  {
+    period: '2026',
+    title: 'ACT — терапия принятия и ответственности',
+    hours: '10 часов',
+  },
+  {
+    period: '2024',
+    title: 'Метафорические ассоциативные карты (МАК)',
+    hours: '180 часов',
+  },
+  {
+    period: '2023',
+    title: 'КПТ детей и подростков',
+    hours: '72 часа',
+  },
+] as const;
+---
+
+<section id="education" class="bg-cream-100">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <h2 class="font-display text-3xl font-semibold text-pine-800 sm:text-4xl">Образование</h2>
+    <p class="mt-4 max-w-2xl leading-relaxed text-pine-700">
+      Два высших образования и регулярное повышение квалификации — я постоянно
+      учусь, чтобы быть полезной своим клиентам.
+    </p>
+
+    <div class="mt-10 grid gap-10 lg:grid-cols-2">
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-clay-600">Высшее образование</h3>
+        <ol class="mt-6 space-y-6 border-l-2 border-pine-200 pl-6">
+          {education.map((item) => (
+            <li class="relative">
+              <span class="absolute -left-[31px] top-1 size-3 rounded-full bg-pine-500" aria-hidden="true"></span>
+              <p class="text-sm font-medium text-clay-600">{item.period}</p>
+              <h4 class="mt-1 font-semibold text-pine-800">{item.title}</h4>
+              <p class="mt-1 text-sm text-pine-700">{item.place}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-clay-600">Дополнительное образование</h3>
+        <ol class="mt-6 space-y-6 border-l-2 border-pine-200 pl-6">
+          {courses.map((course) => (
+            <li class="relative">
+              <span class="absolute -left-[31px] top-1 size-3 rounded-full bg-clay-400" aria-hidden="true"></span>
+              <p class="text-sm font-medium text-clay-600">{course.period} · {course.hours}</p>
+              <h4 class="mt-1 font-semibold text-pine-800">{course.title}</h4>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
