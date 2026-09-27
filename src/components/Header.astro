@@ -24,7 +24,7 @@ import { NAV_ITEMS, SocialLink } from '@utils/site';
       </a>
     </nav>
 
-    <details class="group relative lg:hidden">
+    <details id="mobile-menu" class="group relative lg:hidden">
       <summary
         class="flex cursor-pointer list-none items-center justify-center rounded-lg p-2 text-pine-700 [&::-webkit-details-marker]:hidden"
         aria-label="Открыть меню"
@@ -60,3 +60,10 @@ import { NAV_ITEMS, SocialLink } from '@utils/site';
     </details>
   </div>
 </header>
+
+<script>
+  import { initMobileMenu } from '@scripts/mobile-menu';
+
+  const details = document.getElementById('mobile-menu');
+  initMobileMenu(details instanceof HTMLDetailsElement ? details : null);
+</script>

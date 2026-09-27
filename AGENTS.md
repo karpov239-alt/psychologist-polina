@@ -98,6 +98,7 @@ src/
   styles/       → global.css (включая стили `.article-content` для текста статей)
   types/        → общие TS-интерфейсы
   utils/        → хелперы (site.ts, date.ts, faq.ts)
+  scripts/      → клиентские TS-модули (mobile-menu.ts)
 content.config.ts → схема коллекции `articles` (title, description, publishedAt, updatedAt?, cover?, tags[], keywords[], draft)
 public/         → CNAME, .nojekyll, favicon, og-image, robots.txt
 ```
