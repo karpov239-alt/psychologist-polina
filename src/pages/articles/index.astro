@@ -25,9 +25,81 @@ const articles = (
     {articles.length === 0 ? (
       <p class="mt-12 text-pine-700">Статьи скоро появятся.</p>
     ) : (
-      <ul class="mt-12 grid gap-6 sm:grid-cols-2">
-        {articles.map((article) => (
-          <li>
+      <>
+        <div
+          id="articles-toolbar"
+          hidden
+          class="mt-8 rounded-2xl border border-pine-100 bg-cream-100 p-4 sm:p-5"
+        >
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <label class="flex flex-col gap-1 text-sm text-pine-700 sm:col-span-2">
+              Поиск по заголовку и ключевым словам
+              <input
+                id="articles-search"
+                type="search"
+                placeholder="Например: тревога"
+                class="rounded-lg border border-pine-200 bg-cream-50 px-3 py-2 text-pine-800 placeholder:text-pine-400 focus:border-pine-400 focus:outline-none"
+              />
+            </label>
+            <label class="flex flex-col gap-1 text-sm text-pine-700">
+              С даты
+              <input
+                id="articles-date-from"
+                type="date"
+                class="rounded-lg border border-pine-200 bg-cream-50 px-3 py-2 text-pine-800 focus:border-pine-400 focus:outline-none"
+              />
+            </label>
+            <label class="flex flex-col gap-1 text-sm text-pine-700">
+              По дату
+              <input
+                id="articles-date-to"
+                type="date"
+                class="rounded-lg border border-pine-200 bg-cream-50 px-3 py-2 text-pine-800 focus:border-pine-400 focus:outline-none"
+              />
+            </label>
+            <label class="flex flex-col gap-1 text-sm text-pine-700 sm:col-span-2">
+              Сортировка
+              <select
+                id="articles-sort"
+                class="rounded-lg border border-pine-200 bg-cream-50 px-3 py-2 text-pine-800 focus:border-pine-400 focus:outline-none"
+              >
+                <option value="date-desc">Сначала новые</option>
+                <option value="date-asc">Сначала старые</option>
+                <option value="title-asc">По названию А–Я</option>
+                <option value="title-desc">По названию Я–А</option>
+              </select>
+            </label>
+            <div class="flex items-end justify-between gap-3 sm:col-span-2">
+              <p id="articles-count" class="text-sm text-pine-500" aria-live="polite"></p>
+              <button
+                type="button"
+                data-reset-filters
+                class="rounded-full border border-pine-300 px-4 py-2 text-sm text-pine-700 transition-colors hover:bg-pine-50"
+              >
+                Сбросить
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="articles-empty" hidden class="mt-12 text-center text-pine-700">
+          <p>По вашему запросу ничего не найдено.</p>
+          <button
+            type="button"
+            data-reset-filters
+            class="mt-4 rounded-full border border-pine-300 px-4 py-2 text-sm text-pine-700 transition-colors hover:bg-pine-50"
+          >
+            Сбросить фильтры
+          </button>
+        </div>
+
+        <ul id="articles-list" class="mt-12 grid gap-6 sm:grid-cols-2">
+          {articles.map((article) => (
+            <li
+              data-title={article.data.title.toLowerCase()}
+              data-keywords={[...article.data.keywords, ...article.data.tags].join(' ').toLowerCase()}
+              data-date={article.data.publishedAt.toISOString().slice(0, 10)}
+            >
             <a
               href={`/articles/${article.id}/`}
               class="block overflow-hidden rounded-2xl border border-pine-100 bg-cream-50 transition-shadow hover:shadow-md"
@@ -57,8 +129,20 @@ const articles = (
               </div>
             </a>
           </li>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </>
     )}
   </section>
+
+  <script>
+    import { initArticlesFilter } from '@scripts/articles-filter';
+
+    const list = document.getElementById('articles-list');
+    const panel = document.getElementById('articles-toolbar');
+    initArticlesFilter(
+      list instanceof HTMLUListElement ? list : null,
+      panel instanceof HTMLElement ? panel : null,
+    );
+  </script>
 </Layout>
