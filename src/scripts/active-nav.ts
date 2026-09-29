@@ -1,5 +1,5 @@
 const DESKTOP_ACTIVE_CLASSES = ['text-pine-500', 'font-medium', 'underline', 'underline-offset-4'];
-const MOBILE_ACTIVE_CLASSES = ['bg-pine-50', 'font-medium'];
+const MOBILE_ACTIVE_CLASSES = ['border-l-4', 'border-pine-500', 'bg-pine-50', 'pl-2', 'font-semibold', 'text-pine-600'];
 
 function isMobileLink(link: HTMLElement): boolean {
   return link.closest('details') !== null;
