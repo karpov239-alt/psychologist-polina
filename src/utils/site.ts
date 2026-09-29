@@ -18,8 +18,8 @@ export const NAV_ITEMS = [
   { href: '/#about', label: 'Обо мне' },
   { href: '/#topics', label: 'С чем работаю' },
   { href: '/#services', label: 'Консультации' },
-  { href: '/articles/', label: 'Статьи' },
   { href: '/#education', label: 'Образование' },
   { href: '/#faq', label: 'Вопросы' },
   { href: '/#contacts', label: 'Контакты' },
+  { href: '/articles/', label: 'Статьи' },
 ] as const;
