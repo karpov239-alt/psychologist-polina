@@ -21,16 +21,16 @@ const breadcrumbSchema = {
 ---
 
 <nav aria-label="Хлебные крошки" class="text-sm">
-  <ol class="flex flex-wrap items-center gap-1.5 text-pine-500">
+  <ol class="flex flex-nowrap items-center gap-1.5 overflow-hidden text-pine-500">
     {items.map((item, index) => (
-      <li class="flex items-center gap-1.5">
-        {index > 0 && <span aria-hidden="true" class="text-pine-300">/</span>}
+      <li class:list={["flex min-w-0 items-center gap-1.5 whitespace-nowrap", { "flex-1 overflow-hidden": !item.href }]}>
+        {index > 0 && <span aria-hidden="true" class="shrink-0 text-pine-300">/</span>}
         {item.href ? (
-          <a href={item.href} class="transition-colors hover:text-pine-700">
+          <a href={item.href} class="shrink-0 transition-colors hover:text-pine-700">
             {item.label}
           </a>
         ) : (
-          <span aria-current="page" class="text-pine-800">{item.label}</span>
+          <span aria-current="page" title={item.label} class="block truncate text-pine-800">{item.label}</span>
         )}
       </li>
     ))}
