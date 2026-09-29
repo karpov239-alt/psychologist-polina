@@ -3,15 +3,28 @@ import '../styles/global.css';
 import SEO from '@components/SEO.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import { buildBreadcrumbs } from '@utils/breadcrumbs';
 
 interface Props {
   title: string;
   description: string;
   canonical?: string;
   type?: 'website' | 'article';
+  breadcrumbLabel?: string;
+  breadcrumbClass?: string;
 }
 
-const { title, description, canonical, type } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  type,
+  breadcrumbLabel,
+  breadcrumbClass = 'max-w-4xl',
+} = Astro.props;
+
+const breadcrumbs = buildBreadcrumbs(Astro.url.pathname, breadcrumbLabel);
 ---
 
 <!doctype html>
@@ -30,6 +43,11 @@ const { title, description, canonical, type } = Astro.props;
     </a>
     <Header />
     <main id="main" class="flex-1">
+      {breadcrumbs.length > 0 && (
+        <div class={`mx-auto w-full px-4 pt-8 sm:px-6 ${breadcrumbClass}`}>
+          <Breadcrumbs items={breadcrumbs} />
+        </div>
+      )}
       <slot />
     </main>
     <Footer />

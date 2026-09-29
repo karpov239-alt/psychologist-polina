@@ -1,0 +1,40 @@
+---
+import type { BreadcrumbItem } from '../types/breadcrumbs';
+import { SITE_URL } from '@utils/site';
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href && { item: new URL(item.href, SITE_URL).href }),
+  })),
+};
+---
+
+<nav aria-label="Хлебные крошки" class="text-sm">
+  <ol class="flex flex-wrap items-center gap-1.5 text-pine-500">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-1.5">
+        {index > 0 && <span aria-hidden="true" class="text-pine-300">/</span>}
+        {item.href ? (
+          <a href={item.href} class="transition-colors hover:text-pine-700">
+            {item.label}
+          </a>
+        ) : (
+          <span aria-current="page" class="text-pine-800">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

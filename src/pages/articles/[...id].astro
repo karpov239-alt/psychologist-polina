@@ -40,12 +40,18 @@ const articleSchema = {
 };
 ---
 
-<Layout title={article.data.title} description={article.data.description} type="article">
+<Layout
+  title={article.data.title}
+  description={article.data.description}
+  type="article"
+  breadcrumbLabel={article.data.title}
+  breadcrumbClass="max-w-3xl"
+>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   </Fragment>
 
-  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+  <article class="mx-auto max-w-3xl px-4 pb-16 pt-6 sm:px-6">
     <header>
       <h1 class="font-display text-4xl font-semibold leading-tight text-pine-800 sm:text-5xl">
         {article.data.title}
