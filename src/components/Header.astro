@@ -10,7 +10,7 @@ import { NAV_ITEMS, SocialLink } from '@utils/site';
 
     <nav aria-label="Основная навигация" class="hidden items-center gap-6 lg:flex">
       {NAV_ITEMS.map((item) => (
-        <a href={item.href} class="text-sm text-pine-700 transition-colors hover:text-pine-500">
+        <a href={item.href} data-nav-target={item.href} class="text-sm text-pine-700 transition-colors hover:text-pine-500">
           {item.label}
         </a>
       ))}
@@ -44,7 +44,7 @@ import { NAV_ITEMS, SocialLink } from '@utils/site';
         class="absolute right-0 top-full mt-2 flex w-56 flex-col gap-1 rounded-2xl border border-pine-100 bg-cream-50 p-3 shadow-lg"
       >
         {NAV_ITEMS.map((item) => (
-          <a href={item.href} class="rounded-lg px-3 py-2 text-pine-800 transition-colors hover:bg-pine-50">
+          <a href={item.href} data-nav-target={item.href} class="rounded-lg px-3 py-2 text-pine-800 transition-colors hover:bg-pine-50">
             {item.label}
           </a>
         ))}
@@ -63,7 +63,9 @@ import { NAV_ITEMS, SocialLink } from '@utils/site';
 
 <script>
   import { initMobileMenu } from '@scripts/mobile-menu';
+  import { initActiveNav } from '@scripts/active-nav';
 
   const details = document.getElementById('mobile-menu');
   initMobileMenu(details instanceof HTMLDetailsElement ? details : null);
+  initActiveNav();
 </script>
