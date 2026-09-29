@@ -17,6 +17,7 @@ export const PRICE = '2500 ₽ / 50 минут';
 export const NAV_ITEMS = [
   { href: '/#about', label: 'Обо мне' },
   { href: '/#topics', label: 'С чем работаю' },
+  { href: '/#approach', label: 'Подход' },
   { href: '/#services', label: 'Консультации' },
   { href: '/#education', label: 'Образование' },
   { href: '/#faq', label: 'Вопросы' },
