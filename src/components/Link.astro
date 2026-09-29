@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<'a'> {
   arrowClass?: string;
 }
 
-const { href, hideArrow = false, arrowClass, target, rel, ...rest } = Astro.props;
+const { href, hideArrow = false, arrowClass, target, rel, class: className, ...rest } = Astro.props;
 
 const isExternal = href.startsWith('http');
 const isPage = !isExternal && !href.includes('#');
@@ -20,6 +20,7 @@ const showArrow = !hideArrow && (isExternal || isPage);
   href={href}
   target={target ?? (isExternal ? '_blank' : undefined)}
   rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
+  class:list={['whitespace-nowrap', className]}
   {...rest}
 >
   <slot />
