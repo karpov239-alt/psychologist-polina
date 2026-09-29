@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import { formatDate } from '@utils/date';
 
@@ -24,24 +25,35 @@ const articles = (
     {articles.length === 0 ? (
       <p class="mt-12 text-pine-700">Статьи скоро появятся.</p>
     ) : (
-      <ul class="mt-12 grid gap-6">
+      <ul class="mt-12 grid gap-6 sm:grid-cols-2">
         {articles.map((article) => (
           <li>
             <a
               href={`/articles/${article.id}/`}
-              class="block rounded-2xl border border-pine-100 bg-cream-50 p-6 transition-shadow hover:shadow-md sm:p-8"
+              class="block overflow-hidden rounded-2xl border border-pine-100 bg-cream-50 transition-shadow hover:shadow-md"
             >
-              <h2 class="font-display text-2xl font-semibold text-pine-800">
-                {article.data.title}
-              </h2>
-              <p class="mt-2 leading-relaxed text-pine-700">{article.data.description}</p>
-              <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-pine-500">
-                <time datetime={article.data.publishedAt.toISOString()}>
-                  {formatDate(article.data.publishedAt)}
-                </time>
-                {article.data.tags.map((tag) => (
-                  <span class="rounded-full bg-pine-100 px-3 py-1 text-xs text-pine-700">{tag}</span>
-                ))}
+              {article.data.cover && (
+                <Image
+                  src={article.data.cover}
+                  alt={article.data.coverAlt ?? ''}
+                  widths={[400, 800]}
+                  sizes="(min-width: 896px) 408px, 100vw"
+                  class="aspect-[16/9] w-full object-cover"
+                />
+              )}
+              <div class="p-5 sm:p-6">
+                <h2 class="font-display text-xl font-semibold text-pine-800">
+                  {article.data.title}
+                </h2>
+                <p class="mt-2 leading-relaxed text-pine-700">{article.data.description}</p>
+                <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-pine-500">
+                  <time datetime={article.data.publishedAt.toISOString()}>
+                    {formatDate(article.data.publishedAt)}
+                  </time>
+                  {article.data.tags.map((tag) => (
+                    <span class="rounded-full bg-pine-100 px-3 py-1 text-xs text-pine-700">{tag}</span>
+                  ))}
+                </div>
               </div>
             </a>
           </li>
