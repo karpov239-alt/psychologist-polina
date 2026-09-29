@@ -34,7 +34,7 @@
 - Общие типы — в `src/types/`.
 - `any` запрещён. Если очень нужно — `unknown` + type guard.
 - `tsconfig.json` наследует `astro/tsconfigs/strict`.
-- Используй path aliases: `@components/*`, `@layouts/*`, `@utils/*`, `@types/*`.
+- Используй path aliases: `@components/*`, `@layouts/*`, `@utils/*`, `@app-types/*` (алиас `@types/*` запрещён — конфликтует с зарезервированным пространством имён TypeScript).
 
 ### SEO (приоритет №1)
 

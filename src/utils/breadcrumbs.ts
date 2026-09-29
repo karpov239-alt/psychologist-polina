@@ -1,4 +1,4 @@
-import type { BreadcrumbItem } from '../types/breadcrumbs';
+import type { BreadcrumbItem } from '@app-types/breadcrumbs';
 
 export enum SegmentLabel {
   articles = 'Статьи',

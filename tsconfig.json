@@ -8,7 +8,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@utils/*": ["./src/utils/*"],
       "@scripts/*": ["./src/scripts/*"],
-      "@types/*": ["./src/types/*"],
+      "@app-types/*": ["./src/types/*"],
       "@assets/*": ["./src/assets/*"]
     }
   }
