@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { formatDate } from '@utils/date';
 import { PSYCHOLOGIST_FULL_NAME, SITE_URL, SocialLink } from '@utils/site';
+import Link from '@components/Link.astro';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles', ({ data }) =>
@@ -81,14 +82,13 @@ const articleSchema = {
         Приглашаю на консультацию — очно в Ярославле или онлайн из любой точки мира.
         Вместе найдём, что поможет именно вам.
       </p>
-      <a
+      <Link
         href={SocialLink.B17}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-4 inline-block rounded-full bg-pine-500 px-6 py-2.5 font-medium text-cream-50 transition-colors hover:bg-pine-600"
+        arrowClass="size-4"
+        class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-6 py-2.5 font-medium text-cream-50 transition-colors hover:bg-pine-600"
       >
         Записаться на консультацию
-      </a>
+      </Link>
     </aside>
 
     <p class="mt-8 text-sm leading-relaxed text-pine-500">

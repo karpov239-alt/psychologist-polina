@@ -1,5 +1,6 @@
 ---
 import { SocialLink, PRICE } from '@utils/site';
+import Link from '@components/Link.astro';
 
 const formats = [
   {
@@ -35,14 +36,12 @@ const formats = [
           </ul>
           <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
             <p class="font-display text-2xl font-semibold text-pine-600">{PRICE}</p>
-            <a
+            <Link
               href={SocialLink.B17}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="rounded-full bg-pine-500 px-6 py-2.5 text-sm font-medium text-cream-50 transition-colors hover:bg-pine-600"
+              class="inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-6 py-2.5 text-sm font-medium text-cream-50 transition-colors hover:bg-pine-600"
             >
               Записаться
-            </a>
+            </Link>
           </div>
         </li>
       ))}

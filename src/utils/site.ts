@@ -24,3 +24,7 @@ export const NAV_ITEMS = [
   { href: '/#contacts', label: 'Контакты' },
   { href: '/articles/', label: 'Статьи' },
 ] as const;
+
+export function isPageLink(href: string): boolean {
+  return !href.includes('#');
+}

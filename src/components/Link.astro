@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import ExternalLinkArrowIcon from '@components/icons/ExternalLinkArrowIcon.astro';
+import InternalLinkArrowIcon from '@components/icons/InternalLinkArrowIcon.astro';
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  hideArrow?: boolean;
+  arrowClass?: string;
+}
+
+const { href, hideArrow = false, arrowClass, target, rel, ...rest } = Astro.props;
+
+const isExternal = href.startsWith('http');
+const isPage = !isExternal && !href.includes('#');
+const showArrow = !hideArrow && (isExternal || isPage);
+---
+
+<a
+  href={href}
+  target={target ?? (isExternal ? '_blank' : undefined)}
+  rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
+  {...rest}
+>
+  <slot />
+  {showArrow && (
+    <>
+      {' '}
+      {isExternal ? (
+        <ExternalLinkArrowIcon class:list={['inline size-3.5 align-[-0.125em]', arrowClass]} />
+      ) : (
+        <InternalLinkArrowIcon class:list={['inline size-3.5 align-[-0.125em]', arrowClass]} />
+      )}
+    </>
+  )}
+</a>

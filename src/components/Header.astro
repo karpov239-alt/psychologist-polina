@@ -1,27 +1,33 @@
 ---
-import { NAV_ITEMS, SocialLink } from '@utils/site';
+import { NAV_ITEMS, SocialLink, isPageLink } from '@utils/site';
+import Link from '@components/Link.astro';
 ---
 
 <header class="sticky top-0 z-40 border-b border-pine-100 bg-cream-100/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-    <a href="/" class="font-display text-xl font-semibold text-pine-700 sm:text-2xl">
+    <Link href="/" hideArrow class="font-display text-xl font-semibold text-pine-700 sm:text-2xl">
       Полина Дворецкая
-    </a>
+    </Link>
 
     <nav aria-label="Основная навигация" class="hidden items-center gap-6 lg:flex">
       {NAV_ITEMS.map((item) => (
-        <a href={item.href} data-nav-target={item.href} class="text-sm text-pine-700 transition-colors hover:text-pine-500">
+        <Link
+          href={item.href}
+          data-nav-target={item.href}
+          class:list={[
+            'text-sm text-pine-700 transition-colors hover:text-pine-500',
+            { 'font-medium hover:underline underline-offset-4': isPageLink(item.href) },
+          ]}
+        >
           {item.label}
-        </a>
+        </Link>
       ))}
-      <a
+      <Link
         href={SocialLink.B17}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-full bg-pine-500 px-5 py-2 text-sm font-medium text-cream-50 transition-colors hover:bg-pine-600"
+        class="inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-5 py-2 text-sm font-medium text-cream-50 transition-colors hover:bg-pine-600"
       >
         Записаться
-      </a>
+      </Link>
     </nav>
 
     <details id="mobile-menu" class="group relative lg:hidden">
@@ -44,18 +50,23 @@ import { NAV_ITEMS, SocialLink } from '@utils/site';
         class="absolute right-0 top-full mt-2 flex w-56 flex-col gap-1 rounded-2xl border border-pine-100 bg-cream-50 p-3 shadow-lg"
       >
         {NAV_ITEMS.map((item) => (
-          <a href={item.href} data-nav-target={item.href} class="rounded-lg px-3 py-2 text-pine-800 transition-colors hover:bg-pine-50">
+          <Link
+            href={item.href}
+            data-nav-target={item.href}
+            class:list={[
+              'rounded-lg px-3 py-2 text-pine-800 transition-colors hover:bg-pine-50',
+              { 'font-medium': isPageLink(item.href) },
+            ]}
+          >
             {item.label}
-          </a>
+          </Link>
         ))}
-        <a
+        <Link
           href={SocialLink.B17}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-1 rounded-full bg-pine-500 px-4 py-2 text-center font-medium text-cream-50 transition-colors hover:bg-pine-600"
+          class="mt-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-pine-500 px-4 py-2 text-center font-medium text-cream-50 transition-colors hover:bg-pine-600"
         >
           Записаться
-        </a>
+        </Link>
       </nav>
     </details>
   </div>

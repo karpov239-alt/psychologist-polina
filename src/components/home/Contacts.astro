@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import { SocialLink } from '@utils/site';
+import Link from '@components/Link.astro';
 import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
 ---
 
@@ -16,10 +17,9 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
       <ul class="mt-8 space-y-4">
         
         <li>
-          <a
+          <Link
             href={SocialLink.Vk}
-            target="_blank"
-            rel="noopener noreferrer"
+            arrowClass="ml-auto size-4 text-pine-400"
             class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
           >
             <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">VK</span>
@@ -27,13 +27,12 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
               <span class="block text-sm text-pine-600">ВКонтакте</span>
               <span class="font-semibold text-pine-800">vk.ru/pollinaflores</span>
             </span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href={SocialLink.B17}
-            target="_blank"
-            rel="noopener noreferrer"
+            arrowClass="ml-auto size-4 text-pine-400"
             class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
           >
             <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">Б17</span>
@@ -41,13 +40,12 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
               <span class="block text-sm text-pine-600">Профиль на b17.ru</span>
               <span class="font-semibold text-pine-800">b17.ru/dvoreckaya_polina</span>
             </span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href={SocialLink.Max}
-            target="_blank"
-            rel="noopener noreferrer"
+            arrowClass="ml-auto size-4 text-pine-400"
             class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
           >
             <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">MAX</span>
@@ -55,11 +53,12 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
               <span class="block text-sm text-pine-600">MAX — мессенджер</span>
               <span class="font-semibold text-pine-800">Написать в MAX</span>
             </span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href={`mailto:${SocialLink.Email}`}
+            hideArrow
             class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
           >
             <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">@</span>
@@ -67,13 +66,12 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
               <span class="block text-sm text-pine-600">Электронная почта</span>
               <span class="font-semibold text-pine-800">{SocialLink.Email}</span>
             </span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href={SocialLink.Telegram}
-            target="_blank"
-            rel="noopener noreferrer"
+            arrowClass="ml-auto size-4 text-pine-400"
             class="flex items-center gap-4 rounded-2xl border border-pine-100 bg-cream-50 p-4 transition-shadow hover:shadow-md"
           >
             <span class="flex size-11 items-center justify-center rounded-xl bg-pine-500 font-semibold text-cream-50">TG</span>
@@ -81,7 +79,7 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
               <span class="block text-sm text-pine-600">Telegram</span>
               <span class="font-semibold text-pine-800">@polinadvoretskaia</span>
             </span>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

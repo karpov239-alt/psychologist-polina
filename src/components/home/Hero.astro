@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import { SocialLink } from '@utils/site';
+import Link from '@components/Link.astro';
 import heroPhoto from '@assets/polina_is_sitting_colored_1.jpg';
 ---
 
@@ -18,20 +19,19 @@ import heroPhoto from '@assets/polina_is_sitting_colored_1.jpg';
         в отношениях и найти опору в себе — очно в Ярославле и онлайн из любой точки мира.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
-        <a
+        <Link
           href={SocialLink.B17}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-full bg-pine-500 px-7 py-3 font-medium text-cream-50 shadow-sm transition-colors hover:bg-pine-600"
+          arrowClass="size-4"
+          class="inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-7 py-3 font-medium text-cream-50 shadow-sm transition-colors hover:bg-pine-600"
         >
           Записаться на консультацию
-        </a>
-        <a
+        </Link>
+        <Link
           href="#about"
           class="rounded-full border border-pine-300 px-7 py-3 font-medium text-pine-700 transition-colors hover:border-pine-500 hover:bg-pine-50"
         >
           Узнать больше
-        </a>
+        </Link>
       </div>
       <p class="mt-8 font-display text-xl italic text-pine-600">
         «Жизнь прекрасна во всех её проявлениях»
