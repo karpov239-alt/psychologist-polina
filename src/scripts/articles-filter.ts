@@ -26,6 +26,7 @@ const comparators: Record<SortOrder, (a: ArticleItem, b: ArticleItem) => number>
 export function initArticlesFilter(
   list: HTMLUListElement | null,
   panel: HTMLElement | null,
+  toggle: HTMLButtonElement | null = null,
 ): void {
   if (!list || !panel) return;
 
@@ -82,6 +83,14 @@ export function initArticlesFilter(
     button.addEventListener('click', resetFilters);
   });
 
-  panel.hidden = false;
+  if (toggle) {
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute('aria-pressed', String(!panel.hidden));
+    });
+  } else {
+    panel.hidden = false;
+  }
   applyFilters();
 }
