@@ -46,7 +46,6 @@ const articleSchema = {
   description={article.data.description}
   type="article"
   breadcrumbLabel={article.data.title}
-  breadcrumbClass="max-w-3xl"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
