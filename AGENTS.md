@@ -34,26 +34,26 @@
 - Общие типы — в `src/types/`.
 - `any` запрещён. Если очень нужно — `unknown` + type guard.
 - `tsconfig.json` наследует `astro/tsconfigs/strict`.
-- Используй path aliases: `@components/*`, `@layouts/*`, `@utils/*`, `@app-types/*` (алиас `@types/*` запрещён — конфликтует с зарезервированным пространством имён TypeScript).
+- Используй path aliases: `@components/*`, `@layouts/*`, `@utils/*`, `@app-types/*`, `@scripts/*`, `@assets/*` (алиас `@types/*` запрещён — конфликтует с зарезервированным пространством имён TypeScript).
 
 ### SEO (приоритет №1)
 
 - Каждая страница **обязана** использовать компонент `<SEO />` с уникальными `title` (до 60 символов) и `description` (до 160 символов).
 - Title-шаблон: `{Заголовок} | Психолог Полина Дворецкая, Ярославль`.
 - Всегда проставляй `<link rel="canonical">`.
-- Для главной и контактов — JSON-LD `Psychologist` / `LocalBusiness` (schema.org).
+- Для главной — JSON-LD `Psychologist` / `LocalBusiness` (schema.org). Сайт одностраничный: услуги и контакты — секции главной (`/#services` и т.п.), отдельных страниц нет.
 - Для статей — JSON-LD `Article` с `author`, `datePublished`, `headline`.
 - Изображения — через `astro:assets`, формат WebP/AVIF, обязательный `alt`.
 - Не добавляй клиентский JS без необходимости. Zero JS by default.
-- Внутренняя перелинковка: каждая статья ссылается минимум на 1 другую статью и на 1 страницу услуг.
+- Внутренняя перелинковка: в новых статьях желательно ставить минимум 1 ссылку на другую статью и на секцию услуг (`/#services`). Существующие статьи без таких ссылок — не повод для массовой правки без запроса.
 
 ### Контент
  
 - Язык сайта: **русский** (`lang="ru"`).
 - Тексты — тёплые, человечные, без канцелярита и без «психотерапевтического жаргона».
 - В текстах естественно упоминать «Ярославль» и «онлайн» (гео + формат работы).
-- Статьи лежат в `src/content/articles/*.md` (или `.mdx`).
-- У каждой статьи в frontmatter: `title`, `description`, `publishedAt`, `updatedAt?`, `cover?`, `tags[]`, `keywords[]`, `draft`.
+- Статьи лежат в `src/content/articles/<slug>/index.md` — отдельная директория на каждую статью.
+- У каждой статьи в frontmatter: `title`, `description`, `publishedAt`, `updatedAt?`, `cover?`, `coverAlt?`, `tags[]`, `keywords[]`, `draft`.
 - Черновики (`draft: true`) не попадают в прод-сборку и sitemap.
 
 ### Запрещено
@@ -66,7 +66,6 @@
 ### Юридическое (важно для психолога)
 
 - В футере — дисклеймер: «Сайт не является медицинским сервисом. Консультации не заменяют медицинскую помощь».
-- При темах суицида, самоповреждения, насилия — статьи должны содержать блок с телефонами доверия (РФ: 8-800-2000-122, 8-495-989-50-50 и т.п.).
 - Формулировки «помогу справиться», «поддержка», а не «вылечу», «гарантирую».
 
 ## Разработка
@@ -92,14 +91,14 @@ npm run build    # проверка, что сборка проходит
 src/
   components/   → UI-компоненты (.astro)
   content/
-    articles/   → статьи (.md), коллекция `articles`
+    articles/   → статьи: директория на статью (<slug>/index.md), коллекция `articles`
   layouts/      → Layout
   pages/        → роуты; статьи — pages/articles/ (список + [...id].astro)
   styles/       → global.css (включая стили `.article-content` для текста статей)
   types/        → общие TS-интерфейсы
-  utils/        → хелперы (site.ts, date.ts, faq.ts)
-  scripts/      → клиентские TS-модули (mobile-menu.ts)
-content.config.ts → схема коллекции `articles` (title, description, publishedAt, updatedAt?, cover?, tags[], keywords[], draft)
+  utils/        → хелперы (site.ts, date.ts, faq.ts, breadcrumbs.ts)
+  scripts/      → клиентские TS-модули (mobile-menu.ts, active-nav.ts, articles-filter.ts)
+content.config.ts → схема коллекции `articles` (title, description, publishedAt, updatedAt?, cover?, coverAlt?, tags[], keywords[], draft)
 public/         → CNAME, .nojekyll, favicon, og-image, robots.txt
 ```
 
@@ -108,8 +107,8 @@ public/         → CNAME, .nojekyll, favicon, og-image, robots.txt
 ## Конвенции кода
 
 - Имена компонентов: PascalCase (`ArticleCard.astro`).
-- Имена страниц: kebab-case (`about-me.astro`, `services.astro`).
-- URL — только латиница, kebab-case, без транслита вперемешку.
+- Имена страниц: kebab-case (`index.astro`, `articles/[...id].astro`).
+- URL — только латиница, kebab-case. Слаги статей — **последовательный транслит** (осознанное SEO-решение: слаги совпадают с русскоязычными поисковыми запросами). Не переименовывай существующие слаги; новые статьи именуй тем же транслитом (`kak-spravitsya-s-trevogoj` и т.п.).
 - Комментарии — только там, где неочевидно. Не комментируй очевидное.
 - Никаких `console.log` в проде.
 
