@@ -100,6 +100,8 @@ src/
   scripts/      → клиентские TS-модули (mobile-menu.ts, active-nav.ts, articles-filter.ts)
 content.config.ts → схема коллекции `articles` (title, description, publishedAt, updatedAt?, cover?, coverAlt?, tags[], keywords[], draft)
 public/         → CNAME, .nojekyll, favicon, og-image, robots.txt
+
+Фавиконки: `public/favicon.svg` — исходник; растровые версии (`favicon.ico`, `favicon-48x48.png`, `favicon-192x192.png`, `apple-touch-icon.png`) генерируются из него командой `npm run favicons` (скрипт `scripts/generate-favicons.mjs`).
 ```
 
 Не меняй структуру `src/pages/` без явного запроса — от неё зависят URL и SEO.
