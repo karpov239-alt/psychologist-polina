@@ -9,6 +9,16 @@ export const enum SocialLink {
   Email = 'pollinaflores@gmail.com',
 }
 
+export const enum YandexForm {
+  Url = 'https://forms.yandex.ru/u/6ac4c4b190290278bda51e8a',
+  EmbedUrl = 'https://forms.yandex.ru/u/6ac4c4b190290278bda51e8a?iframe=1',
+  EmbedScriptUrl = 'https://forms.yandex.ru/_static/embed.js',
+  IframeName = 'ya-form-6ac4c4b190290278bda51e8a',
+}
+
+export const PRIVACY_POLICY_PATH = '/privacy-policy/';
+export const APPOINTMENT_PATH = '/#appointment';
+
 export const PSYCHOLOGIST_NAME = 'Полина Дворецкая';
 export const PSYCHOLOGIST_FULL_NAME = 'Дворецкая Полина Анатольевна';
 export const CITY = 'Ярославль';

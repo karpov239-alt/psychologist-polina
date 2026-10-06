@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { formatDate } from '@utils/date';
-import { PSYCHOLOGIST_FULL_NAME, SITE_URL, SocialLink } from '@utils/site';
+import { APPOINTMENT_PATH, PSYCHOLOGIST_FULL_NAME, SITE_URL } from '@utils/site';
 import Link from '@components/Link.astro';
 
 export async function getStaticPaths() {
@@ -82,8 +82,7 @@ const articleSchema = {
         Вместе найдём, что поможет именно вам.
       </p>
       <Link
-        href={SocialLink.B17}
-        arrowClass="size-4"
+        href={APPOINTMENT_PATH}
         class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-6 py-2.5 font-medium text-cream-50 transition-colors hover:bg-pine-600"
       >
         Записаться на консультацию

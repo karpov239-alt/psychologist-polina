@@ -93,7 +93,7 @@ src/
   content/
     articles/   → статьи: директория на статью (<slug>/index.md), коллекция `articles`
   layouts/      → Layout
-  pages/        → роуты; статьи — pages/articles/ (список + [...id].astro)
+  pages/        → роуты; статьи — pages/articles/ (список + [...id].astro); privacy-policy.astro — политика конфиденциальности
   styles/       → global.css (включая стили `.article-content` для текста статей)
   types/        → общие TS-интерфейсы
   utils/        → хелперы (site.ts, date.ts, faq.ts, breadcrumbs.ts)

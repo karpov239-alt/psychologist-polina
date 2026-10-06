@@ -1,5 +1,5 @@
 ---
-import { NAV_ITEMS, SocialLink, isPageLink } from '@utils/site';
+import { NAV_ITEMS, APPOINTMENT_PATH, isPageLink } from '@utils/site';
 import Link from '@components/Link.astro';
 ---
 
@@ -23,7 +23,7 @@ import Link from '@components/Link.astro';
         </Link>
       ))}
       <Link
-        href={SocialLink.B17}
+        href={APPOINTMENT_PATH}
         class="inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-5 py-2 text-sm font-medium text-cream-50 transition-colors hover:bg-pine-600"
       >
         Записаться
@@ -62,7 +62,7 @@ import Link from '@components/Link.astro';
           </Link>
         ))}
         <Link
-          href={SocialLink.B17}
+          href={APPOINTMENT_PATH}
           class="mt-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-pine-500 px-4 py-2 text-center font-medium text-cream-50 transition-colors hover:bg-pine-600"
         >
           Записаться

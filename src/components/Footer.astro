@@ -1,5 +1,5 @@
 ---
-import { NAV_ITEMS, SocialLink, isPageLink } from '@utils/site';
+import { NAV_ITEMS, PRIVACY_POLICY_PATH, SocialLink, isPageLink } from '@utils/site';
 import Link from '@components/Link.astro';
 
 const year = new Date().getFullYear();
@@ -68,6 +68,11 @@ const year = new Date().getFullYear();
   <div class="border-t border-pine-700">
     <div class="mx-auto max-w-6xl space-y-2 px-4 py-6 text-xs leading-relaxed text-cream-300 sm:px-6">
       <p>Сайт не является медицинским сервисом. Консультации не заменяют медицинскую помощь.</p>
+      <p>
+        <Link href={PRIVACY_POLICY_PATH} hideArrow class="underline underline-offset-2 transition-colors hover:text-cream-100">
+          Политика конфиденциальности
+        </Link>
+      </p>
       <p>© {year} Полина Дворецкая. Все права защищены.</p>
     </div>
   </div>

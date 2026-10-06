@@ -1,6 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
-import { SocialLink } from '@utils/site';
+import { APPOINTMENT_PATH } from '@utils/site';
 import Link from '@components/Link.astro';
 import heroPhoto from '@assets/polina_is_sitting_colored_1.jpg';
 ---
@@ -20,8 +20,7 @@ import heroPhoto from '@assets/polina_is_sitting_colored_1.jpg';
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
         <Link
-          href={SocialLink.B17}
-          arrowClass="size-4"
+          href={APPOINTMENT_PATH}
           class="inline-flex items-center gap-1.5 rounded-full bg-pine-500 px-7 py-3 font-medium text-cream-50 shadow-sm transition-colors hover:bg-pine-600"
         >
           Записаться на консультацию
