@@ -23,6 +23,8 @@
 
   --font-display: "Cormorant Variable", "Georgia", serif;
   --font-sans: "Onest Variable", "Segoe UI", system-ui, sans-serif;
+
+  --header-h: 3rem;
 }
 
 @font-face {
