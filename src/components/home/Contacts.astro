@@ -1,8 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
-import { PRIVACY_POLICY_PATH, SocialLink, YandexForm } from '@utils/site';
+import { PRIVACY_POLICY_PATH, SocialLink } from '@utils/site';
 import Link from '@components/Link.astro';
 import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
+import YandexForm from './YandexForm.astro';
 ---
 
 <section id="contacts" class="bg-cream-100">
@@ -101,18 +102,9 @@ import contactsPhoto from '@assets/polina_is_standing_colored_1.jpg';
       Можно просто заполнить короткую форму — я свяжусь с вами, и мы договоримся об удобном времени.
       Не нужно подробно описывать ситуацию, достаточно пары слов.
     </p>
-    <div class="mt-8 overflow-hidden rounded-[2rem] border border-pine-100 bg-white shadow-md">
-      <script is:inline src={YandexForm.EmbedScriptUrl}></script>
-      <iframe
-        src={YandexForm.EmbedUrl}
-        name={YandexForm.IframeName}
-        width="100%"
-        height="650"
-        class="pt-2 px-1 border-0"
-        loading="lazy"
-        title="Форма записи на консультацию к психологу Полине Дворецкой"
-      ></iframe>
-    </div>
+    
+    <YandexForm />
+
     <p class="mt-4 text-sm leading-relaxed text-pine-600">
       Заполняя и отправляя форму, вы даёте согласие на обработку персональных данных в соответствии
       с <Link href={PRIVACY_POLICY_PATH} class="underline underline-offset-2 hover:text-pine-500">политикой конфиденциальности</Link>.
