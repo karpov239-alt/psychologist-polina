@@ -50,14 +50,14 @@ const icons = {
 ---
 
 <section id="topics" class="bg-cream-100">
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+  <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:py-8">
     <h2 class="font-display text-3xl font-semibold text-pine-800 sm:text-4xl">С чем я работаю</h2>
     <p class="mt-4 max-w-2xl leading-relaxed text-pine-700">
       Каждый запрос уникален, но чаще всего я работаю с этими темами.
       Если вы не нашли здесь своего запроса — напишите мне, и мы вместе разберёмся, могу ли я помочь.
     </p>
 
-    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {topics.map((topic) => {
         const Icon = icons[topic.icon];
         return (
